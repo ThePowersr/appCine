@@ -3,9 +3,9 @@ import { Text, View } from 'react-native'
 import { PropsCustomText } from './custom-text.interface'
 import styles from './custom-text.styles'
 
-const CustomText = ({ children }: PropsCustomText) => {
+const CustomText = ({ children, styleContainer }: PropsCustomText) => {
   return (
-    <Text style={styles.text}>{children}</Text>
+    <Text style={[styles.text, styleContainer]}>{children}</Text>
   )
 }
 
