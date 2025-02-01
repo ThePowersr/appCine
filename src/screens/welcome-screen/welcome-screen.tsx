@@ -4,6 +4,10 @@ import CustomButton from '../../components/custom-button/custom-button';
 import styles from './welcome-screen.styles';
 import { Dimensions, Image, View } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
+import { useNavigation, CommonActions } from '@react-navigation/native';
+import { StackScreenProps } from '@react-navigation/stack';
+
+//interface Props extends StackScreenProps<any,any>{};
 
 const WelcomeScreen = () => {
 
