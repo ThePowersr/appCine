@@ -4,16 +4,17 @@ import CustomText from '../../components/custom-text/custom-text';
 import { Text, TextInput, View } from 'react-native';
 import CustomButton from '../../components/custom-button/custom-button';
 import styles from './sing-up.styles';
-import { useNavigation, CommonActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParams } from '../../navigation/Navigation';
 
 const SignUpScreen = () => {
 
-  //hook de useNavigation
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  //const navigation=useNavigation();
-  //const [text, onChangeText] = React.useState('Useless Text');
-  
-  const [number, onChangeNumber] = React.useState('');
+  const [number, onChangeNumber] = React.useState<string>('');
+  const [name, setName] = React.useState<string>('');
+  const [lastName, setLastName] = React.useState<string>('');
 
   return (
 
@@ -22,19 +23,20 @@ const SignUpScreen = () => {
 
       <CustomText styleContainer={styles.textTitle}>SignUpScreen</CustomText>
 
-      <View style={{justifyContent: 'space-between' }}>
+      <View style={{ justifyContent: 'space-between' }}>
         <Text style={styles.subTitle}>Nombres:</Text>
         <TextInput
           style={styles.input}
-          //onChangeText={onChangeText}
-          //value={text}
+          onChangeText={setName}
+          value={name}
           placeholder="Nombres completos"
         />
         <Text style={styles.subTitle}>Apellidos:</Text>
         <TextInput
           style={styles.input}
-          //onChangeText={onChangeText}
+          onChangeText={setLastName}
           //value={text}
+          value={lastName}
           placeholder="Apellidos completos"
         />
         <Text style={styles.subTitle}>Correo electronico:</Text>
@@ -52,8 +54,6 @@ const SignUpScreen = () => {
           placeholder="+593-9XX-XXX-XXX"
           keyboardType="numeric"
         />
-
-
       </View>
 
 
@@ -68,8 +68,7 @@ const SignUpScreen = () => {
           />
           <CustomButton
             title='Regresar'
-            onPress={() => console.log('hola')}
-            //onPress={() => navigation.dispatch(CommonActions.navigate({name:''}))}
+            onPress={() => navigation.navigate('WelcomeScreen')}
             isSecondary
           />
         </View>

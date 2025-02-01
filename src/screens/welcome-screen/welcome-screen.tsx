@@ -4,12 +4,14 @@ import CustomButton from '../../components/custom-button/custom-button';
 import styles from './welcome-screen.styles';
 import { Dimensions, Image, View } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
-import { useNavigation, CommonActions } from '@react-navigation/native';
-import { StackScreenProps } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParams } from '../../navigation/Navigation';
 
 //interface Props extends StackScreenProps<any,any>{};
 
 const WelcomeScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const arrayImage = [
     {
@@ -46,7 +48,6 @@ const WelcomeScreen = () => {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'blue',
             borderRadius: 20,
           }}
           scrollAnimationDuration={5000}
@@ -62,7 +63,7 @@ const WelcomeScreen = () => {
           />
           <CustomButton
             title='registrarse'
-            onPress={() => console.log('hola')}
+            onPress={() => navigation.navigate('SingUpScreen')}
             isSecondary
           />
         </View>
