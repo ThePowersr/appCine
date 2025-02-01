@@ -53,11 +53,11 @@ const WelcomeScreen = () => {
       <View style={{ gap: 20, marginBottom: 30 }}>
         <View style={{ gap: 20 }}>
           <CustomButton
-            title='nombre'
+            title='iniciar sesion'
             onPress={() => console.log('hola')}
           />
           <CustomButton
-            title='boton secundario'
+            title='registrarse'
             onPress={() => console.log('hola')}
             isSecondary
           />
