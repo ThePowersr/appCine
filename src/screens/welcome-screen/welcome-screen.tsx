@@ -59,7 +59,7 @@ const WelcomeScreen = () => {
         <View style={{ gap: 20 }}>
           <CustomButton
             title='iniciar sesion'
-            onPress={() => console.log('hola')}
+            onPress={() => navigation.navigate('SignInScreen')}
           />
           <CustomButton
             title='registrarse'

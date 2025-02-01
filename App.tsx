@@ -6,7 +6,7 @@ import { Navigation } from './src/navigation/Navigation';
 const App = () => {
   return (
     <>
-      {/* <StatusBar /> */}
+      <StatusBar />
       <GestureHandlerRootView>
         <SafeAreaView style={{flex:1}}><Navigation /></SafeAreaView>
         
