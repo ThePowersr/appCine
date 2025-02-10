@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, Text, TextInput, View } from "react-native";
 import ContentView from "../../components/content-view/content-view";
 import CustomText from "../../components/custom-text/custom-text";
@@ -7,12 +7,19 @@ import styles from "./sing-in.styles";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "../../navigation/Navigation";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const SignInScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   return (
     <ContentView
@@ -29,13 +36,29 @@ const SignInScreen = () => {
           keyboardType="email-address"
         />
         <Text style={styles.subTitle}>Contraseña:</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setPassword}
-          value={password}
-          placeholder="********"
-          secureTextEntry={true}
-        />
+        
+        <View
+          style={{
+            ...styles.input,
+            flexDirection: "row",
+          }}
+        >
+          <TextInput
+            onChangeText={setPassword}
+            value={password}
+            style={{ flex: 1 }}
+            placeholder="********"
+            secureTextEntry={!showPassword}
+          />
+          <MaterialCommunityIcons
+            name={showPassword ? "eye-off" : "eye"}
+            size={24}
+            color="#aaa"
+            style={{ marginLeft: 10 }}
+            onPress={toggleShowPassword}
+          />
+        </View>
+
       </View>
       <View style={{ gap: 20, marginBottom: 30 }}>
         <View style={{ gap: 20 }}>

@@ -8,7 +8,9 @@ const App = () => {
     <>
       <StatusBar />
       <GestureHandlerRootView>
-        <SafeAreaView style={{flex:1}}><Navigation /></SafeAreaView>
+        <SafeAreaView style={{flex:1}}>
+          <Navigation />
+          </SafeAreaView>
         
 
       </GestureHandlerRootView>
