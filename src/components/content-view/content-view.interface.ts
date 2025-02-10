@@ -1,8 +1,8 @@
-import { StyleProp, ViewProps, ViewStyle } from "react-native";
+import { ScrollViewProps, StyleProp, ViewStyle } from "react-native";
 
-interface PropsContentView extends ViewProps {
+interface PropsContentView extends ScrollViewProps {
   styleContainer?: StyleProp<ViewStyle>;
   children: React.ReactNode;
-};
+}
 
 export default PropsContentView;

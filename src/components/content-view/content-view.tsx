@@ -1,14 +1,18 @@
-import React from 'react'
-import { View } from 'react-native';
-import PropsContentView from './content-view.interface';
-import styles from './content-view.styles';
+import React from "react";
+import { ScrollView } from "react-native";
+import PropsContentView from "./content-view.interface";
+import styles from "./content-view.styles";
 
-const ContentView = ({ children, styleContainer, ...props }: PropsContentView) => {
+const ContentView = ({
+  children,
+  styleContainer,
+  ...props
+}: PropsContentView) => {
   return (
-    <View style={[styles.container, styleContainer]} {...props}>
+    <ScrollView style={[styles.container, styleContainer]} {...props}>
       {children}
-    </View>
-  )
-}
+    </ScrollView>
+  );
+};
 
-export default ContentView
+export default ContentView;
