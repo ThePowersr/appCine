@@ -28,6 +28,8 @@ const SignUpScreen = () => {
     setLastName,
     email,
     setEmail,
+    password,
+    setPassword,
     onPressRegister,
   } = useSignUpScreen({ navigation });
 
@@ -67,6 +69,13 @@ const SignUpScreen = () => {
             value={phoneNumber}
             placeholder="+593-9XX-XXX-XXX"
             keyboardType="numeric"
+          />
+          <Text style={styles.subTitle}>Contrasena:</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+            placeholder="Ingresa una contrasena"
           />
         </View>
 

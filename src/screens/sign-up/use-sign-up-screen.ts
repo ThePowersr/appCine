@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RootStackParams } from "../../navigation/Navigation";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Alert } from "react-native";
+import { users } from "../../data/users";
 
 const useSignUpScreen = ({
   navigation,
@@ -12,6 +13,7 @@ const useSignUpScreen = ({
   const [name, setName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const validateForm = (
     phoneNumber: string,
@@ -20,18 +22,27 @@ const useSignUpScreen = ({
     email: string
   ) => {
     if (phoneNumber && name && lastName && email) {
-      // navigate
-      navigation.navigate("WelcomeScreen");
       console.log(
-        `entraste con estos datos:\n ${phoneNumber},\n ${name},\n ${lastName},\n ${email}`
+        `entraste con estos datos:\n ${phoneNumber},\n ${name},\n ${lastName},\n ${email},\n ${password}`
       );
-      return;
+      return true;
     }
     Alert.alert("Todos los campos son obligatorios");
+    return false;
+  };
+
+  const registerUser = () => {
+    users.push({ id: users.length + 2, name, email, password });
+    navigation.navigate("WelcomeScreen");
   };
 
   const onPressRegister = () => {
-    validateForm(phoneNumber, name, lastName, email);
+    const nextStep = validateForm(phoneNumber, name, lastName, email);
+    if (nextStep) {
+      registerUser();
+      return;
+    }
+    return;
   };
 
   return {
@@ -43,6 +54,8 @@ const useSignUpScreen = ({
     setLastName,
     email,
     setEmail,
+    password,
+    setPassword,
     onPressRegister,
   };
 };
