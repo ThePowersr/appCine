@@ -6,6 +6,7 @@ import SignInScreen from "../screens/sign-in/sign-in-screen";
 import HomeScreen from "../screens/home-screen/home-screen";
 import { Pelicula } from "../data/products";
 import DetailScreen from "../screens/details-screen/details-screen";
+import ShoppingCart from "../screens/shopping-cart-screen/shopping-cart";
 
 export type RootStackParams = {
   WelcomeScreen: undefined;
@@ -13,6 +14,7 @@ export type RootStackParams = {
   SingUpScreen: undefined;
   HomeScreen: undefined;
   DetailScreen: { pelicula: Pelicula };
+  ShoppingCartScreen: undefined;
 };
 
 export const RootStack = createNativeStackNavigator({
@@ -26,6 +28,7 @@ export const RootStack = createNativeStackNavigator({
     SingUpScreen: SignUpScreen,
     HomeScreen: HomeScreen,
     DetailScreen: DetailScreen,
+    ShoppingCartScreen: ShoppingCart,
   },
 });
 
